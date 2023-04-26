@@ -22,7 +22,7 @@ public class ModelImpl implements Model{
     }
     @Override
     public void addLamp(int r, int c) {
-        if(r < 0 || c < 0 || r > currentPuzzle.getHeight() || c > currentPuzzle.getWidth()){
+        if(r < 0 || c < 0 || r >= currentPuzzle.getHeight() || c >= currentPuzzle.getWidth()){
             throw new IndexOutOfBoundsException();
         }
         if(currentPuzzle.getCellType(r, c) != CellType.CORRIDOR){
@@ -35,7 +35,7 @@ public class ModelImpl implements Model{
 
     @Override
     public void removeLamp(int r, int c) {
-        if(r < 0 || c < 0 || r > currentPuzzle.getHeight() || c > currentPuzzle.getWidth()){
+        if(r < 0 || c < 0 || r >= currentPuzzle.getHeight() || c >= currentPuzzle.getWidth()){
             throw new IndexOutOfBoundsException();
         }
         if(currentPuzzle.getCellType(r, c) != CellType.CORRIDOR){
@@ -47,7 +47,7 @@ public class ModelImpl implements Model{
 
     @Override
     public boolean isLit(int r, int c) {
-        if(r < 0 || c < 0 || r > currentPuzzle.getHeight() || c > currentPuzzle.getWidth()){
+        if(r < 0 || c < 0 || r >= currentPuzzle.getHeight() || c >= currentPuzzle.getWidth()){
             throw new IndexOutOfBoundsException();
         }
         if(currentPuzzle.getCellType(r, c) != CellType.CORRIDOR){
@@ -63,7 +63,7 @@ public class ModelImpl implements Model{
 
     @Override
     public boolean isLamp(int r, int c) {
-        if(r < 0 || c < 0 || r > currentPuzzle.getHeight() || c > currentPuzzle.getWidth()){
+        if(r < 0 || c < 0 || r >= currentPuzzle.getHeight() || c >= currentPuzzle.getWidth()){
             throw new IndexOutOfBoundsException();
         }
         if(currentPuzzle.getCellType(r, c) != CellType.CORRIDOR){
@@ -75,7 +75,7 @@ public class ModelImpl implements Model{
 
     @Override
     public boolean isLampIllegal(int r, int c) {
-        if(r < 0 || c < 0 || r > currentPuzzle.getHeight() || c > currentPuzzle.getWidth()){
+        if(r < 0 || c < 0 || r >= currentPuzzle.getHeight() || c >= currentPuzzle.getWidth()){
             throw new IndexOutOfBoundsException();
         }
         if(!isLamp(r, c)) {
@@ -135,7 +135,7 @@ public class ModelImpl implements Model{
 
     @Override
     public boolean isClueSatisfied(int r, int c) {
-        if(r < 0 || c < 0 || r > currentPuzzle.getHeight() || c > currentPuzzle.getWidth()){
+        if(r < 0 || c < 0 || r >= currentPuzzle.getHeight() || c >= currentPuzzle.getWidth()){
             throw new IndexOutOfBoundsException();
         }
         if(currentPuzzle.getCellType(r, c) != CellType.CLUE){

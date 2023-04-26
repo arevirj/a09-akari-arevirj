@@ -4,7 +4,7 @@ public class PuzzleImpl implements Puzzle {
   private final int[][] board;
 
   public PuzzleImpl(int[][] board) {
-    this.board = board;
+    this.board = board.clone();
   }
 
   @Override
