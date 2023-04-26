@@ -29,6 +29,7 @@ public class ModelImpl implements Model{
             throw new IllegalArgumentException("Cell Type is not Corridor");
         }
         lamps.add(new Point(c, r));
+        notifyObservers();
 
     }
 
@@ -41,6 +42,7 @@ public class ModelImpl implements Model{
             throw new IllegalArgumentException("Cell Type is not Corridor");
         }
         lamps.removeIf(p -> p.getX() == c && p.getY() == r);
+        notifyObservers();
     }
 
     @Override
@@ -111,12 +113,13 @@ public class ModelImpl implements Model{
     @Override
     public void resetPuzzle() {
         lamps.clear();
+        notifyObservers();
     }
 
     @Override
     public boolean isSolved() {
-        for(int i = 0; i < currentPuzzle.getWidth(); i++){
-            for(int j = 0; j < currentPuzzle.getHeight(); j++){
+        for(int i = 0; i < currentPuzzle.getHeight(); i++){
+            for(int j = 0; j < currentPuzzle.getWidth(); j++){
                 if(currentPuzzle.getCellType(i, j) == CellType.CLUE){
                     if(!isClueSatisfied(i, j)){
                         return false;
@@ -133,6 +136,7 @@ public class ModelImpl implements Model{
                 }
             }
         }
+       notifyObservers();
         return true;
     }
 
@@ -227,6 +231,12 @@ public class ModelImpl implements Model{
             }
         }
         return false;
+    }
+
+  public void notifyObservers() {
+    for (ModelObserver observer : observers) {
+      observer.update(this);
+    }
     }
 
 }
