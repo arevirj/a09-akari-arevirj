@@ -51,8 +51,11 @@ public class ModelImpl implements Model{
         if(currentPuzzle.getCellType(r, c) != CellType.CORRIDOR){
             throw new IllegalArgumentException("Cell Type is not Corridor");
         }
-        boolean lit = false;
-        return lit;
+        if(isLamp(r,c)){return true;}
+        else{
+            return searchLamp(r, c);
+        }
+
     }
 
     @Override
@@ -64,12 +67,7 @@ public class ModelImpl implements Model{
             throw new IllegalArgumentException("Cell Type is not Corridor");
         }
         Point lamp = new Point(c, r);
-        if(lamps.contains(lamp)){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return lamps.contains(lamp);
     }
 
     @Override
@@ -77,11 +75,12 @@ public class ModelImpl implements Model{
         if(r < 0 || c < 0 || r > currentPuzzle.getHeight() || c > currentPuzzle.getWidth()){
             throw new IndexOutOfBoundsException();
         }
-        return false;
-    }
+        if(isLamp(r, c)) { return searchLamp(r, c);}
+        else{return false;}
+  }
 
-    @Override
-    public Puzzle getActivePuzzle() {
+  @Override
+  public Puzzle getActivePuzzle() {
         return currentPuzzle;
     }
 
@@ -108,7 +107,7 @@ public class ModelImpl implements Model{
 
     @Override
     public void resetPuzzle() {
-
+        lamps.clear();
     }
 
     @Override
@@ -132,5 +131,49 @@ public class ModelImpl implements Model{
     @Override
     public void removeObserver(ModelObserver observer) {
 
+    }
+
+    public boolean searchLamp(int r, int c){
+        //Looking Left
+        if (r > 0) {
+            int rowIndex = r-1;
+            while (rowIndex >= 0 && currentPuzzle.getCellType(r, rowIndex) == CellType.CORRIDOR) {
+                if (isLamp(r, rowIndex)) {
+                    return true;
+                }
+                rowIndex--;
+            }
+        }
+        //Looking Right
+        if(r < currentPuzzle.getWidth() - 1){
+            int rowIndex = r + 1;
+            while(rowIndex <= currentPuzzle.getWidth() - 1 && currentPuzzle.getCellType(r, rowIndex) == CellType.CORRIDOR){
+                if(isLamp(r, rowIndex)){
+                    return true;
+                }
+                rowIndex++;
+            }
+        }
+        //Looking up
+        if( c > 0){
+            int colIndex = c - 1;
+            while (colIndex >= 0 && currentPuzzle.getCellType(colIndex, c) == CellType.CORRIDOR) {
+                if (isLamp(colIndex, c)) {
+                    return true;
+                }
+                colIndex--;
+            }
+        }
+        //Looking Down
+        if(c < currentPuzzle.getHeight() - 1){
+            int colIndex = c + 1;
+            while(colIndex < currentPuzzle.getHeight() && currentPuzzle.getCellType(colIndex, c) == CellType.CORRIDOR){
+                if(isLamp(colIndex, c)){
+                    return true;
+                }
+                colIndex--;
+            }
+        }
+        return false;
     }
 }
