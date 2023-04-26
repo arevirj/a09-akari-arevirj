@@ -28,8 +28,10 @@ public class ModelImpl implements Model{
         if(currentPuzzle.getCellType(r, c) != CellType.CORRIDOR){
             throw new IllegalArgumentException("Cell Type is not Corridor");
         }
-        lamps.add(new Point(r, c));
-        notifyObservers();
+        if(!isLamp(r, c)){
+            lamps.add(new Point(r, c));
+            notifyObservers();
+        }
 
     }
 
