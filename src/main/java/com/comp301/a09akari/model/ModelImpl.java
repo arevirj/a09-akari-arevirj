@@ -7,12 +7,10 @@ import java.util.List;
 
 public class ModelImpl implements Model{
     private final PuzzleLibrary library;
-
+    private final List<ModelObserver> observers;
+    private final ArrayList<Point> lamps;
     private Puzzle currentPuzzle;
     private int currentIndex;
-    private final List<ModelObserver> observers;
-
-    private final ArrayList<Point> lamps;
     public ModelImpl(PuzzleLibrary library){
         this.library = library;
         this.currentIndex = 0;
