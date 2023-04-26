@@ -43,7 +43,7 @@ public class PuzzleImpl implements Puzzle {
     return board[r][c];
   }
 
-  public int[][] getClone(){
+  public int[][] getClone() {
     return board.clone();
   }
 }

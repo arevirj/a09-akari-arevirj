@@ -6,13 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ModelImpl implements Model{
-    private PuzzleLibrary library;
+    private final PuzzleLibrary library;
 
     private Puzzle currentPuzzle;
     private int currentIndex;
-    private List<ModelObserver> observers;
+    private final List<ModelObserver> observers;
 
-    private ArrayList<Point> lamps;
+    private final ArrayList<Point> lamps;
     public ModelImpl(PuzzleLibrary library){
         this.library = library;
         this.currentIndex = 0;
