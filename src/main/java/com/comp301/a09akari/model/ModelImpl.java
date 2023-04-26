@@ -120,18 +120,11 @@ public class ModelImpl implements Model{
     public boolean isSolved() {
         for(int i = 0; i < currentPuzzle.getHeight(); i++){
             for(int j = 0; j < currentPuzzle.getWidth(); j++){
-                if(currentPuzzle.getCellType(i, j) == CellType.CLUE){
-                    if(!isClueSatisfied(i, j)){
+                if(currentPuzzle.getCellType(i, j) == CellType.CLUE && !isClueSatisfied(i,j)){
+                   return false;
+                }else if(currentPuzzle.getCellType(i, j) == CellType.CORRIDOR){
+                    if(!isLit(i,j) || (isLamp(i,j) && isLampIllegal(i, j))){
                         return false;
-                    }
-                }if(currentPuzzle.getCellType(i, j) == CellType.CORRIDOR){
-                    if(!isLit(i,j)){
-                        return false;
-                    }
-                    if(isLamp(i, j)){
-                        if(isLampIllegal(i, j)){
-                            return false;
-                        }
                     }
                 }
             }

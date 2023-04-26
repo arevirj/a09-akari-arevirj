@@ -18,7 +18,6 @@ public class Main {
     gameModel.addLamp(0,1);
     gameModel.addLamp(1,0);
     gameModel.addLamp(2,1);
-
     System.out.println(gameModel.isSolved());
   }
 }
