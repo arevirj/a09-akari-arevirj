@@ -12,12 +12,10 @@ public class Main {
 //    Puzzle puzzleTwo = new PuzzleImpl(SamplePuzzles.PUZZLE_02);
 //    samples.addPuzzle(puzzleOne);
 //    samples.addPuzzle(puzzleTwo);
-    int[][] sampBoard = {{6,6}, {6,3}, {6,6}};
+    int[][] sampBoard = {{5}};
     samples.addPuzzle(new PuzzleImpl(sampBoard));
     Model gameModel = new ModelImpl(samples);
-    gameModel.addLamp(0,1);
-    gameModel.addLamp(1,0);
-    gameModel.addLamp(2,1);
+
     System.out.println(gameModel.isSolved());
   }
 }

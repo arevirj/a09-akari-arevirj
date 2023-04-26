@@ -105,6 +105,7 @@ public class ModelImpl implements Model{
             this.currentPuzzle = library.getPuzzle(index);
             this.currentIndex = index;
         }
+        resetPuzzle();
     }
 
     @Override
@@ -131,7 +132,7 @@ public class ModelImpl implements Model{
                 }
             }
         }
-       notifyObservers();
+        notifyObservers();
         return true;
     }
 
