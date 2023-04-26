@@ -121,7 +121,35 @@ public class ModelImpl implements Model{
         if(r < 0 || c < 0 || r > currentPuzzle.getHeight() || c > currentPuzzle.getWidth()){
             throw new IndexOutOfBoundsException();
         }
-        return false;
+        if(currentPuzzle.getCellType(r, c) != CellType.CLUE){
+            throw new IllegalArgumentException("Cell Type is not Clue");
+        }
+        int clueAmount = currentPuzzle.getClue(r, c);
+
+        // Variable to keep track of the surrounding lamps
+        int surroundCount = 0;
+
+        if(r+1 <= currentPuzzle.getHeight()-1){
+            if(isLamp(r+1, c)){
+                surroundCount++;
+            }
+        }
+        if(r-1 >= 0){
+            if(isLamp(r-1, c)){
+                surroundCount++;
+            }
+        }
+        if(c+1 <= currentPuzzle.getWidth()-1){
+            if(isLamp(r, c+1)){
+                surroundCount++;
+            }
+        }
+        if(c-1 >= 0){
+            if(isLamp(r, c-1)){
+                surroundCount++;
+            }
+        }
+        return(surroundCount == clueAmount);
     }
 
     @Override
@@ -180,4 +208,5 @@ public class ModelImpl implements Model{
         }
         return false;
     }
+
 }
