@@ -130,7 +130,7 @@ public class ModelImpl implements Model{
                     }
                 }
                 if(type == CellType.CLUE){
-                    if(isClueSatisfied(i, j)){
+                    if(!isClueSatisfied(i, j)){
                         return false;
                     }
                 }
