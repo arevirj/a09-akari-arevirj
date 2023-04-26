@@ -113,7 +113,32 @@ public class ModelImpl implements Model{
 
     @Override
     public boolean isSolved() {
-        return false;
+
+        for(int i = 0; i < currentPuzzle.getHeight(); i++){
+            for(int j = 0; j < currentPuzzle.getWidth(); j++){
+                CellType type = currentPuzzle.getCellType(i, j);
+                if(type == CellType.CORRIDOR){
+                    if(isLamp(i, j)){
+                        if(isLampIllegal(i, j)){
+                            return false;
+                        }
+                    }
+                    else{
+                        if(!isLit(i, j)){
+                            return false;
+                        }
+                    }
+                }
+                if(type == CellType.CLUE){
+                    if(isClueSatisfied(i, j)){
+                        return false;
+                    }
+                }
+            }
+        }
+
+
+        return true;
     }
 
     @Override
