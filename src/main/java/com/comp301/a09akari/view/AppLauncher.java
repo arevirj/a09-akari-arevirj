@@ -15,6 +15,5 @@ public class AppLauncher extends Application {
     samples.addPuzzle(puzzleOne);
     samples.addPuzzle(puzzleTwo);
     Model gameModel = new ModelImpl(samples);
-
   }
 }

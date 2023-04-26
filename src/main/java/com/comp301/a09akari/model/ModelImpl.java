@@ -123,10 +123,8 @@ public class ModelImpl implements Model{
                             return false;
                         }
                     }
-                    else{
-                        if(!isLit(i, j)){
-                            return false;
-                        }
+                    if(!isLit(i, j)){
+                        return false;
                     }
                 }
                 if(type == CellType.CLUE){
@@ -136,8 +134,6 @@ public class ModelImpl implements Model{
                 }
             }
         }
-
-
         return true;
     }
 
@@ -179,12 +175,12 @@ public class ModelImpl implements Model{
 
     @Override
     public void addObserver(ModelObserver observer) {
-
+        observers.add(observer);
     }
 
     @Override
     public void removeObserver(ModelObserver observer) {
-
+        observers.remove(observer);
     }
 
     public boolean searchLamp(int r, int c){
