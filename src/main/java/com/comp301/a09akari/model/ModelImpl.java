@@ -28,7 +28,7 @@ public class ModelImpl implements Model{
         if(currentPuzzle.getCellType(r, c) != CellType.CORRIDOR){
             throw new IllegalArgumentException("Cell Type is not Corridor");
         }
-        lamps.add(new Point(c, r));
+        lamps.add(new Point(r, c));
         notifyObservers();
 
     }
@@ -41,7 +41,7 @@ public class ModelImpl implements Model{
         if(currentPuzzle.getCellType(r, c) != CellType.CORRIDOR){
             throw new IllegalArgumentException("Cell Type is not Corridor");
         }
-        lamps.removeIf(p -> p.getX() == c && p.getY() == r);
+        lamps.removeIf(p -> p.getX() == r && p.getY() == c);
         notifyObservers();
     }
 
@@ -69,7 +69,7 @@ public class ModelImpl implements Model{
         if(currentPuzzle.getCellType(r, c) != CellType.CORRIDOR){
             throw new IllegalArgumentException("Cell Type is not Corridor");
         }
-        Point lamp = new Point(c, r);
+        Point lamp = new Point(r, c);
         return lamps.contains(lamp);
     }
 
