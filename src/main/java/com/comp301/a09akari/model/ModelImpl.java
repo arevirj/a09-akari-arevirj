@@ -171,7 +171,7 @@ public class ModelImpl implements Model{
                 if(isLamp(colIndex, c)){
                     return true;
                 }
-                colIndex--;
+                colIndex++;
             }
         }
         return false;
