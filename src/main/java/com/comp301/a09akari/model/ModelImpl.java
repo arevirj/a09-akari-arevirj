@@ -17,7 +17,7 @@ public class ModelImpl implements Model{
         this.library = library;
         this.currentIndex = 0;
         this.currentPuzzle = library.getPuzzle(0);
-        this.observers = null;
+        this.observers = new ArrayList<>();
         this.lamps = new ArrayList<>();
     }
     @Override
@@ -115,8 +115,8 @@ public class ModelImpl implements Model{
 
     @Override
     public boolean isSolved() {
-        for(int i = 0; i < currentPuzzle.getHeight(); i++){
-            for(int j = 0; j < currentPuzzle.getWidth(); j++){
+        for(int i = 0; i < currentPuzzle.getWidth(); i++){
+            for(int j = 0; j < currentPuzzle.getHeight(); j++){
                 if(currentPuzzle.getCellType(i, j) == CellType.CLUE){
                     if(!isClueSatisfied(i, j)){
                         return false;
