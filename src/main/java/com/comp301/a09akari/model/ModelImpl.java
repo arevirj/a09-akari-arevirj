@@ -180,9 +180,6 @@ public class ModelImpl implements Model{
     }
 
     public boolean searchLamp(int r, int c){
-        if(currentPuzzle.getHeight() == 1 && currentPuzzle.getWidth() == 1){
-            return(isLamp(r,c));
-        }
         //Looking Left
         if (c > 0) {
             int rowIndex = c-1;
