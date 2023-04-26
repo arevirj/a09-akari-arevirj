@@ -51,7 +51,9 @@ public class ModelImpl implements Model{
         if(currentPuzzle.getCellType(r, c) != CellType.CORRIDOR){
             throw new IllegalArgumentException("Cell Type is not Corridor");
         }
-        if(isLamp(r,c)){return true;}
+        if(isLamp(r,c)){
+            return true;
+        }
         else{
             return searchLamp(r, c);
         }
@@ -134,8 +136,8 @@ public class ModelImpl implements Model{
 
     public boolean searchLamp(int r, int c){
         //Looking Left
-        if (r > 0) {
-            int rowIndex = r-1;
+        if (c > 0) {
+            int rowIndex = c-1;
             while (rowIndex >= 0 && currentPuzzle.getCellType(r, rowIndex) == CellType.CORRIDOR) {
                 if (isLamp(r, rowIndex)) {
                     return true;
@@ -144,8 +146,8 @@ public class ModelImpl implements Model{
             }
         }
         //Looking Right
-        if(r < currentPuzzle.getWidth() - 1){
-            int rowIndex = r + 1;
+        if(c < currentPuzzle.getWidth() - 1){
+            int rowIndex = c + 1;
             while(rowIndex <= currentPuzzle.getWidth() - 1 && currentPuzzle.getCellType(r, rowIndex) == CellType.CORRIDOR){
                 if(isLamp(r, rowIndex)){
                     return true;
@@ -154,8 +156,8 @@ public class ModelImpl implements Model{
             }
         }
         //Looking up
-        if( c > 0){
-            int colIndex = c - 1;
+        if( r > 0){
+            int colIndex = r - 1;
             while (colIndex >= 0 && currentPuzzle.getCellType(colIndex, c) == CellType.CORRIDOR) {
                 if (isLamp(colIndex, c)) {
                     return true;
@@ -164,8 +166,8 @@ public class ModelImpl implements Model{
             }
         }
         //Looking Down
-        if(c < currentPuzzle.getHeight() - 1){
-            int colIndex = c + 1;
+        if(r < currentPuzzle.getHeight() - 1){
+            int colIndex = r + 1;
             while(colIndex <= currentPuzzle.getHeight() -1 && currentPuzzle.getCellType(colIndex, c) == CellType.CORRIDOR){
                 if(isLamp(colIndex, c)){
                     return true;
