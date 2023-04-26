@@ -76,8 +76,10 @@ public class ModelImpl implements Model{
         if(r < 0 || c < 0 || r > currentPuzzle.getHeight() || c > currentPuzzle.getWidth()){
             throw new IndexOutOfBoundsException();
         }
-        if(isLamp(r, c)) { return searchLamp(r, c);}
-        else{return false;}
+        if(!isLamp(r, c)) {
+            throw new IllegalArgumentException("Cell is not a lamp");
+        }
+        return searchLamp(r, c);
   }
 
   @Override
