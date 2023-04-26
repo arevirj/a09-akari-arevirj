@@ -55,7 +55,6 @@ public class ModelImpl implements Model{
         else{
             return searchLamp(r, c);
         }
-
     }
 
     @Override
@@ -167,7 +166,7 @@ public class ModelImpl implements Model{
         //Looking Down
         if(c < currentPuzzle.getHeight() - 1){
             int colIndex = c + 1;
-            while(colIndex < currentPuzzle.getHeight() && currentPuzzle.getCellType(colIndex, c) == CellType.CORRIDOR){
+            while(colIndex <= currentPuzzle.getHeight() -1 && currentPuzzle.getCellType(colIndex, c) == CellType.CORRIDOR){
                 if(isLamp(colIndex, c)){
                     return true;
                 }
