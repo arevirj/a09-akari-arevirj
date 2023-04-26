@@ -135,6 +135,9 @@ public class ModelImpl implements Model{
     }
 
     public boolean searchLamp(int r, int c){
+        if(currentPuzzle.getHeight() == 1 && currentPuzzle.getWidth() == 1){
+            return(isLamp(r,c));
+        }
         //Looking Left
         if (c > 0) {
             int rowIndex = c-1;
@@ -156,7 +159,7 @@ public class ModelImpl implements Model{
             }
         }
         //Looking up
-        if( r > 0){
+        if(r > 0){
             int colIndex = r - 1;
             while (colIndex >= 0 && currentPuzzle.getCellType(colIndex, c) == CellType.CORRIDOR) {
                 if (isLamp(colIndex, c)) {
