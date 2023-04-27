@@ -19,20 +19,40 @@
 
  }
 
+.clue {
+    -fx-background-color: #000000;
+    -fx-text-fill: #FFFFFF;
+    -fx-pref-height: 24px;
+      -fx-pref-width: 24px;
+     -fx-alignment: center;
+}
  .solved-clue {
  -fx-background-color: green;
+ -fx-pref-height: 24px;
+  -fx-pref-width: 24px;
  -fx-alignment: center;
  }
 
  .wall {
  -fx-background-color: #000000;
+ -fx-pref-height: 24px;
+  -fx-pref-width: 24px;
  -fx-alignment: center;
 }
  .lit {
  -fx-background-color: yellow;
- -fx-alignment: center;
+ -fx-text-fill: red;
+ -fx-pref-height: 20px;
+  -fx-pref-width: 20px;
  }
 
  .message {
  -fx-alignment: center;
+ -fx-text-fill: green;
+ }
+
+ .corridor {
+ -fx-pref-height: 20px;
+ -fx-pref-width: 20px;
+ -fx-border-color: #000000;
  }
