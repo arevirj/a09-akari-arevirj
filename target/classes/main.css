@@ -5,3 +5,34 @@
  * JavaFX start() method:
  *   scene.getStylesheets().add("main.css");
  */
+
+ .controls-layout {
+   -fx-padding: 10px;
+   -fx-alignment: center;
+
+ }
+
+ .board {
+   -fx-background-color: #bbada1;
+   -fx-padding: 10px;
+   -fx-alignment: center;
+
+ }
+
+ .solved-clue {
+ -fx-background-color: green;
+ -fx-alignment: center;
+ }
+
+ .wall {
+ -fx-background-color: #000000;
+ -fx-alignment: center;
+}
+ .lit {
+ -fx-background-color: yellow;
+ -fx-alignment: center;
+ }
+
+ .message {
+ -fx-alignment: center;
+ }

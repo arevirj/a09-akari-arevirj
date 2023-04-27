@@ -1,19 +1,36 @@
 package com.comp301.a09akari.view;
 
+import com.comp301.a09akari.SampleLibrary;
 import com.comp301.a09akari.SamplePuzzles;
+import com.comp301.a09akari.controller.ControllerImpl;
 import com.comp301.a09akari.model.*;
 import javafx.application.Application;
-import javafx.stage.Stage;
+import javafx.scene.Scene;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 public class AppLauncher extends Application {
   @Override
   public void start(Stage stage) {
     // TODO: Create your Model, View, and Controller instances and launch your GUI
-    PuzzleLibrary samples = new PuzzleLibraryImpl();
-    Puzzle puzzleOne = new PuzzleImpl(SamplePuzzles.PUZZLE_01);
-    Puzzle puzzleTwo = new PuzzleImpl(SamplePuzzles.PUZZLE_02);
-    samples.addPuzzle(puzzleOne);
-    samples.addPuzzle(puzzleTwo);
-    Model gameModel = new ModelImpl(samples);
+    stage.setTitle("Akari!");
+    PuzzleLibrary library = new SampleLibrary().library;
+    Model gameModel = new ModelImpl(library);
+    ControllerImpl controller = new ControllerImpl(gameModel);
+
+  View view = new View(controller, stage);
+
+  Scene scene = new Scene(view.render());
+  scene.getStylesheets().add("main.css");
+  stage.setScene(scene);
+
+  gameModel.addObserver((Model m) -> {
+    scene.setRoot(view.render());
+    stage.sizeToScene();
+  });
+    stage.show();
+
   }
 }

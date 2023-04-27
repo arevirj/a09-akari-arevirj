@@ -6,16 +6,6 @@ import javafx.application.Application;
 
 public class Main {
   public static void main(String[] args) {
-    //Application.launch(AppLauncher.class);
-    PuzzleLibrary samples = new PuzzleLibraryImpl();
-//    Puzzle puzzleOne = new PuzzleImpl(SamplePuzzles.PUZZLE_01);
-//    Puzzle puzzleTwo = new PuzzleImpl(SamplePuzzles.PUZZLE_02);
-//    samples.addPuzzle(puzzleOne);
-//    samples.addPuzzle(puzzleTwo);
-    int[][] sampBoard = {{5}};
-    samples.addPuzzle(new PuzzleImpl(sampBoard));
-    Model gameModel = new ModelImpl(samples);
-
-    System.out.println(gameModel.isSolved());
+    Application.launch(AppLauncher.class);
   }
 }

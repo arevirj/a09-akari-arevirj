@@ -128,7 +128,7 @@ public class ModelImpl implements Model {
         }
       }
     }
-    notifyObservers();
+    // notifyObservers();
     return true;
   }
 
@@ -145,22 +145,24 @@ public class ModelImpl implements Model {
     // Variable to keep track of the surrounding lamps
     int surroundCount = 0;
 
-    if (r + 1 <= currentPuzzle.getHeight() - 1) {
+    if (r + 1 <= currentPuzzle.getHeight() - 1
+        && currentPuzzle.getCellType(r + 1, c) == CellType.CORRIDOR) {
       if (isLamp(r + 1, c)) {
         surroundCount++;
       }
     }
-    if (r - 1 >= 0) {
+    if (r - 1 >= 0 && currentPuzzle.getCellType(r - 1, c) == CellType.CORRIDOR) {
       if (isLamp(r - 1, c)) {
         surroundCount++;
       }
     }
-    if (c + 1 <= currentPuzzle.getWidth() - 1) {
+    if (c + 1 <= currentPuzzle.getWidth() - 1
+        && currentPuzzle.getCellType(r, c + 1) == CellType.CORRIDOR) {
       if (isLamp(r, c + 1)) {
         surroundCount++;
       }
     }
-    if (c - 1 >= 0) {
+    if (c - 1 >= 0 && currentPuzzle.getCellType(r, c - 1) == CellType.CORRIDOR) {
       if (isLamp(r, c - 1)) {
         surroundCount++;
       }
