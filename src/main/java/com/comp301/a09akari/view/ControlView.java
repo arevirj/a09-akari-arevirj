@@ -6,43 +6,43 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 
-import java.io.FileInputStream;
+public class ControlView implements FXComponent {
+  private final ControllerImpl controller;
 
-public class ControlView implements FXComponent{
-        private ControllerImpl controller;
+  public ControlView(ControllerImpl controller) {
+    this.controller = controller;
+  }
 
-        public ControlView(ControllerImpl controller){
-            this.controller = controller;
-        }
-    @Override
-    public Parent render() {
-        Pane layout = new HBox();
-        layout.getStyleClass().add("controls-layout");
-        Button resetButton = new Button("Reset");
-        resetButton.setOnAction((ActionEvent event) -> {
-            controller.clickResetPuzzle();
-        }
-    );
-
-        Button nextButton = new Button("Next");
-        nextButton.setOnAction((ActionEvent event) -> {
-            controller.clickNextPuzzle();
+  @Override
+  public Parent render() {
+    Pane layout = new HBox();
+    layout.getStyleClass().add("controls-layout");
+    Button resetButton = new Button("Reset");
+    resetButton.setOnAction(
+        (ActionEvent event) -> {
+          controller.clickResetPuzzle();
         });
 
-        Button previousButton = new Button("Previous");
-        previousButton.setOnAction((ActionEvent event) -> {
-            controller.clickPrevPuzzle();
+    Button nextButton = new Button("Next");
+    nextButton.setOnAction(
+        (ActionEvent event) -> {
+          controller.clickNextPuzzle();
         });
 
-
-        Button randButton = new Button("Random");
-        randButton.setOnAction((ActionEvent event) -> {
-            controller.clickRandPuzzle();
+    Button previousButton = new Button("Previous");
+    previousButton.setOnAction(
+        (ActionEvent event) -> {
+          controller.clickPrevPuzzle();
         });
-        layout.getChildren().addAll(nextButton, previousButton, resetButton, randButton);
 
-        return layout;
-    }
+    Button randButton = new Button("Random");
+    randButton.setOnAction(
+        (ActionEvent event) -> {
+          controller.clickRandPuzzle();
+        });
+    layout.getChildren().addAll(nextButton, previousButton, resetButton, randButton);
+
+    return layout;
+  }
 }
